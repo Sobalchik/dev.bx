@@ -21,13 +21,19 @@ function printMovies(array $movies, int $age) : void
     }
 }
 
-function setUserAge(int &$input ) : bool
+function setUserAge()
 {
-    $input = readline("Enter your age: ");
-    if(is_numeric($input))
-        return true;
+    return readline("Enter your age: ");
+}
+
+function checkValid($input) : bool
+{
+    if (is_numeric($input))
+        {
+            return true;
+        }
     else
-        return  false;
+        return false;
 }
 
 function formatMovie(array $movie) : string
