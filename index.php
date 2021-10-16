@@ -5,11 +5,12 @@ require "./movies/movies.php";
 
 /** @var array $movies */
 
-
-    $age = setUserAge();
-    if(checkValid($age))
-    {
-        printMovies($movies, $age);
-    }
+$age = setUserAge();
+if (checkValid($age))
+{
+	printMovies($movies, $age);
+}
 else
-    return 0;
+{
+	return 0;
+}
