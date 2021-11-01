@@ -28,8 +28,6 @@
 .menu{
 	display: block;
 	margin: 0 30px;
-	list-style-type:none;
-	padding-left: 0;
 }
 .menu-item{
 	border-bottom: 1px solid rgba(242,242,242,0.1);
