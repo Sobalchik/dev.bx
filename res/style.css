@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 .wrapper {
 	display: flex;
@@ -53,7 +53,6 @@
 	align-items: center;
 	text-transform: uppercase;
 	color: #B7B7B7;
-;
 }
 .menu-item:last-child{
 	border-bottom: none;
@@ -63,28 +62,66 @@
 	color:#fff;
 	background: rgba(255, 255, 255, 0.05);
 }
-
+.movie-list {
+	margin: 20px 50px 70px 45px;
+}
 .movie-list--item {
-	display: block;
+	display: inline-block;
+	position: relative;
 	width: 370px;
 	height: 700px;
+	margin: 15px;
+	overflow: hidden;
 
 	background: #FFFFFF;
 	box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
+}
+.movie-list--item-overlay{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.7);
+	z-index: 9;
+	border-radius: 20px;
 
-	margin: 20px 30px;
+	opacity: 0;
 }
 
-.movie-list--item-image
+.movie-list--item-overlay-more{
+	width: 221px;
+	height: 56px;
+	background: #4EE7B0;
+	border-radius: 7px;
+	font-family: 'Open Sans', sans-serif;
+
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 56px;
+
+	text-align: center;
+	text-transform: uppercase;
+
+	color: #FFFFFF;
+}
+
+.movie-list--item:hover .movie-list--item-overlay
 {
+	opacity: 1;
+}
+
+.movie-list--item-image {
 	display: block;
 	height: 430px;
-
+	background-size: cover;
 	border-radius: 20px 20px 0 0;
 }
-.movie-list--item-head
-{
+.movie-list--item-head {
 	display: block;
 	margin: 0 20px;
 	padding: 12px 0 15px 0;
@@ -99,8 +136,7 @@
 
 	color: #333333;
 }
-.movie-list--item-subtitle
-{
+.movie-list--item-subtitle {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 	font-size: 14px;
@@ -108,8 +144,7 @@
 
 	color: #999999;
 }
-.movie-list--item-description
-{
+.movie-list--item-description {
 	display: block;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
@@ -119,8 +154,7 @@
 
 	color: #333333;
 }
-.movie-list--item-bottom
-{
+.movie-list--item-bottom {
 	display: flex;
 	justify-content: space-between;
 	margin: 0 20px 23px 20px;
@@ -129,11 +163,10 @@
 .movie-list--item-bottom-time-clock {
 	position: absolute;
 	left: 0;
-	height: 20px;
-	width: 20px;
+	height: 19px;
+	width: 19px;
 }
-.movie-list--item-bottom-time
-{
+.movie-list--item-bottom-time {
 	position: relative;
 	padding-left: 25px;
 	font-family: 'Open Sans', sans-serif;
@@ -142,8 +175,7 @@
 
 	color: #CCCCCC;
 }
-.movie-list--item-bottom-info
-{
+.movie-list--item-bottom-info {
 	font-family: 'Open Sans', sans-serif;
 	font-weight: 600;
 	font-size: 10px;
