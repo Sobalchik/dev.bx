@@ -91,6 +91,7 @@
 	border-radius: 20px;
 
 	opacity: 0;
+	transition: 1s;
 }
 
 .movie-list--item-overlay-more{
