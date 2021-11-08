@@ -1,0 +1,65 @@
+@import "movie-list.css";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+.wrapper {
+	display: flex;
+	overflow: hidden;
+	height: 100vh;
+}
+.sidebar{
+	display: block;
+	width: 400px;
+	background: #383838;
+}
+.sidebar--platform
+{
+	width: 210px;
+	height: 67px;
+	margin: 50px 100px 60px 85px;
+}
+.container {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+.header {
+	height: 100px;
+	background: #FFFFFF;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05);
+}
+.content {
+	flex: 1;
+	overflow: auto;
+	background: #CCCCCC;
+}
+.menu{
+	display: block;
+	margin: 0 30px;
+}
+.menu-item{
+	border-bottom: 1px solid rgba(242,242,242,0.1);
+}
+.menu-item a{
+	display: flex;
+	height: 70px;
+	padding: 0 15px;
+
+	text-decoration: none;
+
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 22px;
+	align-items: center;
+	text-transform: uppercase;
+	color: #B7B7B7;
+}
+.menu-item:last-child{
+	border-bottom: none;
+}
+.menu-item--active,
+.menu-item a:hover{
+	color:#fff;
+	background: rgba(255, 255, 255, 0.05);
+}
