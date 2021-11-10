@@ -19,6 +19,7 @@ else
 	$currentPage = getFileName(__FILE__);
 }
 
+
 //render movie-list
 $movieListPage = renderTemplate("./resources/pages/movie-list.php", [
 	'movies' => $movies,

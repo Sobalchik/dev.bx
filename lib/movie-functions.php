@@ -12,7 +12,7 @@ function getShortText(string $text, int $lengths): string
 
 function getMovieLink(string $linkToFolder, int $pictureId): string
 {
-	return ("{$linkToFolder}/{$pictureId}.jpg");
+	return ("$linkToFolder/$pictureId.jpg");
 }
 
 function getMovieLengthInHours(int $FilmLengthInMinute): string
@@ -38,4 +38,12 @@ function getMovieByGenre(array $movies, string $genre): array
 		}
 		return false;
 	});
+}
+function getGenres(array $genres):string
+{
+	$result="";
+	foreach ($genres['genres'] as $genre)
+		$result .=  $genre.",";
+
+	return mb_substr($result, 0, -1);
 }

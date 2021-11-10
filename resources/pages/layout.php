@@ -43,7 +43,9 @@ require "./config/app.php";
 				<div class="header-menu-request-words">Поиск по каталогу...</div>
 			</div>
 			<div class="header-request-find">Найти</div>
-			<div class="header-request-add">Добавить</div>
+			<div class="header-request-add">
+				<a class= "header-request-add-link" href="more.php?id=1">Добавить</a>
+			</div>
 			</div>
 		</div>
 		<div class="content">
