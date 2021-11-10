@@ -8,24 +8,20 @@ require_once "./data/movies.php";
 require_once "./lib/template-functions.php";
 require_once "./lib/movie-functions.php";
 require_once "./lib/helper-functions.php";
+require_once "./lib/more-functions.php";
 
-if (isset($_GET['genre']))
+if (isset($_GET['id']))
 {
-	$movies = getMovieByGenre($movies, $_GET['genre']);
-	$currentPage = $_GET['genre'];
-}
-else
-{
-	$currentPage = getFileName(__FILE__);
+	$movie = getMovieById($movies, $_GET['id']);
 }
 
-//render movie-list
-$movieListPage = renderTemplate("./resources/pages/more.php", [
-	'movies' => $movies,
+//render _movie
+$movieListPage = renderTemplate("./resources/blocks/_more.php", [
+	'movie' => $movie,
 ]);
+
 
 //render layout
 renderLayout($movieListPage, [
 	'genres' => $genres,
-	'currentPage' => $currentPage,
 ]);

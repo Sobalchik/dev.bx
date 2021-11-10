@@ -25,7 +25,6 @@
 	background: rgba(0, 0, 0, 0.7);
 	z-index: 9;
 	border-radius: 20px;
-
 	opacity: 0;
 	transition: 1s;
 }
@@ -35,14 +34,18 @@
 	height: 56px;
 	background: #4EE7B0;
 	border-radius: 7px;
+
+	text-align: center;
+	text-transform: uppercase;
+}
+.movie-list--item-overlay-more-link{
+	text-decoration: none;
+
 	font-family: 'Open Sans', sans-serif;
 
 	font-weight: bold;
 	font-size: 18px;
 	line-height: 56px;
-
-	text-align: center;
-	text-transform: uppercase;
 
 	color: #FFFFFF;
 }

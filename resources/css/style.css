@@ -135,9 +135,14 @@
 	font-size: 12px;
 	line-height: 40px;
 
+	text-decoration: none;
 	text-align: center;
 	text-transform: uppercase;
 	margin-left: 115px;
+
+}
+.header-request-add-link{
+	text-decoration: none;
 	color: #FFFFFF;
 }
 /* CONTENT */
@@ -146,4 +151,6 @@
 	overflow: auto;
 	background: #CCCCCC;
 }
+
+
 
