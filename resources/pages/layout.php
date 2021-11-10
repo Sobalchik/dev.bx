@@ -1,7 +1,10 @@
 <?php
 /** @var array $genres */
 /** @var string $content */
+/** @var array $config */
+/** @var string $currentPage */
 require "./data/movies.php";
+require "./config/app.php";
 ?>
 
 <!DOCTYPE html>
@@ -19,21 +22,30 @@ require "./data/movies.php";
 	<div class="sidebar">
 		<div class="sidebar--platform" style="background-image: url(/res/img/bitflix.png)"> </div>
 		<ul class="menu">
-			<li class="menu-item menu-item--active">
-				<a href="http://index.php">Главная</a>
+			<li class="menu-item">
+				<a class="menu-item-link <?= $currentPage === 'index'? "active" : "" ?>" href="<?= "index.php"?>"> <?=$config['menu']['index']?> </a>
 			</li>
 				<?php foreach($genres as $code => $name): ?>
 					<li class="menu-item">
-				<a href="ref.html"> <?= $name ?> </a>
+				<a class="menu-item-link <?= $currentPage === $name ? "active" : "" ?>" href="<?= "index.php?genre=".$name?>">  <?= $name ?> </a>
 					</li>
 				<?php endforeach; ?>
-			<li class="menu-item">
-			<a href="http://index.php">Избранное</a>
+			<li class="menu-item" >
+			<a class="menu-item-link <?= $currentPage === 'chosen'? "active" : "" ?>" href="<?= "chosen.php"?>"> <?= $config['menu']['chosen']?></a>
 			</li>
 		</ul>
 	</div>
 	<div class ="container">
-		<div class="header"></div>
+		<div class="header">
+			<div class="header-menu">
+			<div class="header-menu-request">
+				<div class="header-menu-request-image" style="background-image: url(/res/img/search.png)"></div>
+				<div class="header-menu-request-words">Поиск по каталогу...</div>
+			</div>
+			<div class="header-request-find">Найти</div>
+			<div class="header-request-add">Добавить</div>
+			</div>
+		</div>
 		<div class="content">
 			<?= $content ?>
 		</div>

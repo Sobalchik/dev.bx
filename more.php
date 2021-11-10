@@ -20,7 +20,7 @@ else
 }
 
 //render movie-list
-$movieListPage = renderTemplate("./resources/pages/movie-list.php", [
+$movieListPage = renderTemplate("./resources/pages/more.php", [
 	'movies' => $movies,
 ]);
 
@@ -29,5 +29,3 @@ renderLayout($movieListPage, [
 	'genres' => $genres,
 	'currentPage' => $currentPage,
 ]);
-
-

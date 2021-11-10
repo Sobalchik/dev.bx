@@ -9,25 +9,10 @@ require_once "./lib/template-functions.php";
 require_once "./lib/movie-functions.php";
 require_once "./lib/helper-functions.php";
 
-if (isset($_GET['genre']))
-{
-	$movies = getMovieByGenre($movies, $_GET['genre']);
-	$currentPage = $_GET['genre'];
-}
-else
-{
-	$currentPage = getFileName(__FILE__);
-}
 
 //render movie-list
-$movieListPage = renderTemplate("./resources/pages/movie-list.php", [
-	'movies' => $movies,
-]);
-
-//render layout
-renderLayout($movieListPage, [
+$result = renderTemplate("./resources/pages/layout.php", [
 	'genres' => $genres,
-	'currentPage' => $currentPage,
+	'currentPage' => getFileName(__FILE__),
 ]);
-
-
+echo $result;
