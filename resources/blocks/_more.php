@@ -17,14 +17,14 @@
 		<div class="more-content-image" style="background-image: url(<?=getMovieLink("./data/img",$movie['id'])?>)"></div>
 		<div class="more-content-information">
 			<div class="more-content-information-rating">
-				<?php for ($i = 0; $i < $movie['rating']; $i++): ?>
+				<?php for ($i = 0; $i < floor($movie['rating']); $i++): ?>
 					<div class="more-content-information-rating--item-cube<?=getColorByRating($movie['rating'])?> "></div>
 				<?php endfor; ?>
 
-				<?php for ($i = 0; $i < 10-$movie['rating']; $i++): ?>
+				<?php for ($i = 0; $i < 10-floor($movie['rating']); $i++): ?>
 				<div class="more-content-information-rating--item-cube"></div>
 				<?php endfor;?>
-				<div class="more-content-information-rating--item-round<?=getColorByRating($movie['rating'])?>"><?=$movie['rating']?></div>
+				<div class="more-content-information-rating--item-round<?=getColorByRating($movie['rating'])?>"><?=number_format ($movie['rating'],1)?></div>
 			</div>
 			<div class="more-content-information-about-word">О фильме</div>
 			<div class="more-content-information-describe">
