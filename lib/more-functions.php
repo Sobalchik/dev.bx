@@ -4,7 +4,7 @@ function getMovieById(array $movies, string $id): array
 {
 	foreach ($movies as $movie)
 	{
-		if ($movie['id'] == $id)
+		if ($movie['id'] === (int)$id)
 		{
 			return $movie;
 		}
