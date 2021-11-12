@@ -86,8 +86,8 @@
 	height: 41px;
 }
 .header-menu-request {
-	width: 836px;
 	height: 40px;
+	width: 836px;
 	display: flex;
 	border-bottom: 1px solid rgba(196, 196, 196, 1);
 }
