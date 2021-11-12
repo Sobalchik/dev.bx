@@ -31,6 +31,9 @@
 .menu {
 	display: block;
 	margin: 0 30px;
+	width: 341px;
+	height: 706px;
+	overflow-y: scroll;
 }
 
 .menu-item {
