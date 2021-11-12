@@ -89,3 +89,21 @@ FROM movie m
 WHERE mt.LANGUAGE_ID = 'ru'
 GROUP BY m.ID
 HAVING COUNT(GENRE_ID) > 3;
+
+--8. Вывести самый популярный жанр для каждого актёра.
+-- Формат вывода: Имя актёра, Жанр, в котором у актёра больше всего фильмов.
+
+SELECT
+ACTOR_GENRE_CNT.ACTOR_NAME, ACTOR_GENRE_CNT.FILM_GENRE
+FROM
+(SELECT
+	a.NAME AS ACTOR_NAME,
+	g.NAME AS FILM_GENRE,
+	COUNT(g.NAME) AS CNT
+from actor a
+	INNER JOIN movie_actor ma on a.ID = ma.ACTOR_ID
+	INNER JOIN movie m on ma.MOVIE_ID = m.ID
+	INNER JOIN movie_genre mg on m.ID = mg.MOVIE_ID
+	INNER JOIN genre g on mg.GENRE_ID = g.ID
+GROUP BY ACTOR_NAME, FILM_GENRE ORDER BY CNT DESC) ACTOR_GENRE_CNT
+GROUP BY ACTOR_GENRE_CNT.ACTOR_NAME
