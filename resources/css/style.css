@@ -6,7 +6,7 @@
 .wrapper {
 	display: flex;
 	overflow: hidden;
-	height: 100vh;
+	height: 125vh;
 }
 
 /* SIDEBAR */
@@ -34,6 +34,9 @@
 	width: 341px;
 	height: 706px;
 	overflow-y: scroll;
+}
+::-webkit-scrollbar {
+	width: 0;
 }
 
 .menu-item {

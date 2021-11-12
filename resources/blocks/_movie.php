@@ -19,7 +19,7 @@
 		<div class="movie-list--item-bottom-time">
 			<div class="movie-list--item-bottom-time-clock" style="background-image: url(/res/img/clock.png)"></div>
 			<?= "{$movie['duration']} мин. / ".getMovieLengthInHours($movie['duration']) ?> </div>
-		<div class="movie-list--item-bottom-info"> <?= getGenres($movie)?> </div>
+		<div class="movie-list--item-bottom-info"> <?= implode("," ,$movie['genres'])?> </div>
 	</div>
 </div>
-
+S

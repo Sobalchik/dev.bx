@@ -33,7 +33,7 @@
 				<div class="more-content-information-describe--item">
 					<div class="more-content-information-describe--item-year"><?=$movie['release-date']?></div>
 					<div class="more-content-information-describe--item-director"><?=$movie['director']?></div>
-					<div class="more-content-information-describe--item-cast"><?=getCast($movie)?></div>
+					<div class="more-content-information-describe--item-cast"><?=implode(", ",$movie['cast'])?></div>
 				</div>
 			</div>
 			<div class="more-content-information-description-word">Описание</div>

@@ -11,14 +11,13 @@ require_once "./lib/helper-functions.php";
 
 if (isset($_GET['genre']))
 {
-	$movies = getMovieByGenre($movies, $_GET['genre']);
+	$movies = getMovieByGenre($movies, $genres, $_GET['genre']);
 	$currentPage = $_GET['genre'];
 }
 else
 {
 	$currentPage = getFileName(__FILE__);
 }
-
 
 //render movie-list
 $movieListPage = renderTemplate("./resources/pages/movie-list.php", [

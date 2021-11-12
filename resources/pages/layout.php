@@ -27,7 +27,7 @@ require "./config/app.php";
 			</li>
 				<?php foreach($genres as $code => $name): ?>
 					<li class="menu-item">
-				<a class="menu-item-link <?= $currentPage === $name ? "active" : "" ?>" href="<?= "index.php?genre=".$name?>">  <?= $name ?> </a>
+				<a class="menu-item-link <?= $currentPage === $name ? "active" : "" ?>" href="<?= "index.php?genre=".$code?>">  <?= $name ?> </a>
 					</li>
 				<?php endforeach; ?>
 			<li class="menu-item" >
