@@ -9,7 +9,6 @@ require_once "./lib/template-functions.php";
 require_once "./lib/movie-functions.php";
 require_once "./lib/helper-functions.php";
 
-
 //render movie-list
 $result = renderTemplate("./resources/pages/layout.php", [
 	'genres' => $genres,

@@ -26,24 +26,16 @@ function getMovieLengthInHours(int $FilmLengthInMinute): string
 	return "0" . floor($hours) . ":" . $minutes;
 }
 
-function getMovieByGenre(array $movies, string $genre): array
+function getMovieByGenre(array $movies, array $genres, string $genre): array
 {
-	return array_filter($movies, function ($movie) use ($genre) {
+	return array_filter($movies, function ($movie) use ($genre, $genres) {
 		foreach ($movie['genres'] as $gen)
 		{
-			if ($gen === $genre)
+			if ($gen === $genres[$genre])
 			{
 				return true;
 			}
 		}
 		return false;
 	});
-}
-function getGenres(array $genres):string
-{
-	$result="";
-	foreach ($genres['genres'] as $genre)
-		$result .=  $genre.",";
-
-	return mb_substr($result, 0, -1);
 }

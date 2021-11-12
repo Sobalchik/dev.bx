@@ -20,7 +20,6 @@ $movieListPage = renderTemplate("./resources/blocks/_more.php", [
 	'movie' => $movie,
 ]);
 
-
 //render layout
 renderLayout($movieListPage, [
 	'genres' => $genres,
