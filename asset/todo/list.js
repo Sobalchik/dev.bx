@@ -80,6 +80,7 @@ export class List
 
 	handleSaveButtonClick(item)
 	{
+		debugger
 		const index = this.items.indexOf(item);
 		if (index > -1)
 		{

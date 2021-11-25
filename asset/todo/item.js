@@ -6,7 +6,7 @@ export class Item
 	saveButtonHandler;
 	isEditable;
 
-	constructor({title, deleteButtonHandler, editButtonHandler})
+	constructor({title, deleteButtonHandler, editButtonHandler,saveButtonHandler})
 	{
 		this.title = String(title);
 		if (typeof deleteButtonHandler === 'function')
@@ -16,6 +16,10 @@ export class Item
 		if (typeof editButtonHandler === 'function')
 		{
 			this.editButtonHandler = editButtonHandler;
+		}
+		if (typeof saveButtonHandler === 'function')
+		{
+			this.saveButtonHandler = saveButtonHandler;
 		}
 	}
 
@@ -69,6 +73,7 @@ export class Item
 		title.classList.add('item-title');
 		title.value = this.title;
 		container.append(title);
+
 		const buttonsContainer = document.createElement('div');
 
 		const saveButton = document.createElement('button');
@@ -87,6 +92,13 @@ export class Item
 		return container;
 	}
 
+	handleSaveButtonClick()
+	{
+		if (this.saveButtonHandler)
+		{
+			this.saveButtonHandler(this);
+		}
+	}
 	handleDeleteButtonClick()
 	{
 		if (this.deleteButtonHandler)
@@ -99,13 +111,6 @@ export class Item
 		if (this.editButtonHandler)
 		{
 			this.editButtonHandler(this);
-		}
-	}
-	handleSaveButtonClick()
-	{
-		if (this.saveButtonHandler)
-		{
-			this.saveButtonHandler(this);
 		}
 	}
 	openEditor()
