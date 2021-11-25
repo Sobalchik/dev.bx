@@ -1,4 +1,4 @@
-import {Item} from "/asset/todo/item.js";
+import { Item } from '/asset/todo/item.js';
 
 export class List
 {
@@ -8,7 +8,7 @@ export class List
 	container;
 	items;
 
-	constructor({container})
+	constructor({ container })
 	{
 		this.container = container;
 		this.items = [];
@@ -29,7 +29,7 @@ export class List
 
 	render()
 	{
-		this.load().then(({items}) => {
+		this.load().then(({ items }) => {
 			if (Array.isArray(items))
 			{
 				items.forEach((itemData) => {
@@ -63,10 +63,9 @@ export class List
 				this.renderItems();
 			}).catch((error) => {
 				console.error('Error trying to delete item');
-			})
+			});
 		}
 	}
-
 
 	handleEditButtonClick(item)
 	{
@@ -74,7 +73,11 @@ export class List
 		if (index > -1)
 		{
 			this.items[index].openEditor();
-			this.renderItems();
+			this.save().then(() => {
+				this.renderItems();
+			}).catch((error) => {
+				console.error('Error trying render items: ');
+			});
 		}
 	}
 
@@ -84,8 +87,16 @@ export class List
 		const index = this.items.indexOf(item);
 		if (index > -1)
 		{
-			this.items[index].closeEditor();
-			this.renderItems();
+			if (this.items[index].isEditable)
+			{
+				this.items[index].title = this.items[index].HTMLTitle.value;
+				this.items[index].closeEditor();
+				this.save().then(() => {
+					this.renderItems();
+				}).catch((error) => {
+					console.error('Error trying render items: ');
+				});
+			}
 		}
 	}
 
@@ -124,7 +135,7 @@ export class List
 			{
 				return;
 			}
-			this.items.push(this.createItem({title: addInput.value}));
+			this.items.push(this.createItem({ title: addInput.value }));
 			addInput.value = '';
 
 			this.save().then(() => {
@@ -147,8 +158,8 @@ export class List
 			return fetch(
 				'/ajax.php?action=load',
 				{
-					method: "POST",
-				}
+					method: 'POST',
+				},
 			).then((response) => {
 				return response.json();
 			}).then((result) => {
@@ -162,7 +173,7 @@ export class List
 			}).catch((result) => {
 				reject(result);
 			}).finally(() => {
-				this.stopProgress()
+				this.stopProgress();
 			});
 		});
 	}
@@ -177,7 +188,7 @@ export class List
 			}
 			this.startProgress();
 			const data = {
-				items: []
+				items: [],
 			};
 			this.items.forEach((item) => {
 				data.items.push(item.getData());
@@ -186,12 +197,12 @@ export class List
 			return fetch(
 				'/ajax.php?action=save',
 				{
-					method: "POST",
+					method: 'POST',
 					headers: {
-						'Content-Type': 'application/json;charset=utf-8'
+						'Content-Type': 'application/json;charset=utf-8',
 					},
-					body: JSON.stringify(data)
-				}
+					body: JSON.stringify(data),
+				},
 			).then((response) => {
 				return response.json();
 			}).then((result) => {
@@ -205,13 +216,14 @@ export class List
 			}).catch((result) => {
 				reject(result);
 			}).finally(() => {
-				this.stopProgress()
+				this.stopProgress();
 			});
 		});
 	}
 
 	startProgress()
 	{
+
 		this.loading.classList.remove('hidden');
 		this.isProgress = true;
 	}

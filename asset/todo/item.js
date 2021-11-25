@@ -64,15 +64,15 @@ export class Item
 
 		return container;
 	}
-
+		HTMLTitle;
 	renderEditor()
 	{
 		const container = document.createElement('div');
 		container.classList.add('item-container');
-		const title = document.createElement('input');
-		title.classList.add('item-title');
-		title.value = this.title;
-		container.append(title);
+		this.HTMLTitle = document.createElement('input');
+		this.HTMLTitle.classList.add('item-title');
+		this.HTMLTitle.value = this.title;
+		container.append(this.HTMLTitle);
 
 		const buttonsContainer = document.createElement('div');
 
