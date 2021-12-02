@@ -4,20 +4,23 @@ declare(strict_types = 1);
 /** @var array $genres */
 /** @var array $config */
 require_once "./config/app.php";
-require_once "./data/movies.php";
 require_once "./lib/template-functions.php";
 require_once "./lib/movie-functions.php";
 require_once "./lib/helper-functions.php";
 require_once "./lib/more-functions.php";
+require_once "./config/connection.php";
 
+$db = connection($config);
+$genres = getGenres($db);
 if (isset($_GET['id']))
 {
-	$movie = getMovieById($movies, $_GET['id']);
+	$actors = getActors($db,(int)$_GET['id']);
+	$movies = getMovieById($db,$actors,$_GET['id']);
 }
 
 //render _movie
 $movieListPage = renderTemplate("./resources/blocks/_more.php", [
-	'movie' => $movie,
+	'movies' => $movies,
 ]);
 
 //render layout

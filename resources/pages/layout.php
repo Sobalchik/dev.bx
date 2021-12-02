@@ -3,7 +3,6 @@
 /** @var string $content */
 /** @var array $config */
 /** @var string $currentPage */
-require "./data/movies.php";
 require "./config/app.php";
 ?>
 
@@ -25,9 +24,9 @@ require "./config/app.php";
 			<li class="menu-item">
 				<a class="menu-item-link <?= $currentPage === 'index'? "active" : "" ?>" href="<?= "index.php"?>"> <?=$config['menu']['index']?> </a>
 			</li>
-				<?php foreach($genres as $code => $name): ?>
+				<?php foreach($genres as $id):?>
 					<li class="menu-item">
-				<a class="menu-item-link <?= $currentPage === $name ? "active" : "" ?>" href="<?= "index.php?genre=".$code?>">  <?= $name ?> </a>
+				<a class="menu-item-link <?= $currentPage === $id['NAME'] ? "active" : "" ?>" href="<?= "index.php?genre=".$id['CODE']?>">  <?= $id['NAME'] ?> </a>
 					</li>
 				<?php endforeach; ?>
 			<li class="menu-item" >
