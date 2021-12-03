@@ -10,7 +10,7 @@ require_once "./lib/helper-functions.php";
 require_once "./lib/more-functions.php";
 require_once "./config/connection.php";
 
-$db = connection($config);
+$db = getConnection($config);
 $genres = getGenres($db);
 if (isset($_GET['id']))
 {

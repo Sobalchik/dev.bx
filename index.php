@@ -8,7 +8,7 @@ require_once "./lib/movie-functions.php";
 require_once "./lib/helper-functions.php";
 require_once "./config/connection.php";
 
-$db = connection($config);
+$db = getConnection($config);
 $genres = getGenres($db);
 
 $movies = getMovies($db, $genres, (string)$_GET['genre']);

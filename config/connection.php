@@ -1,6 +1,6 @@
 <?php
 
-function connection(array $data)
+function getConnection(array $data)
 {
 	$database = mysqli_init();
 	$connectionResult = mysqli_real_connect(
