@@ -24,9 +24,9 @@ require "./config/app.php";
 			<li class="menu-item">
 				<a class="menu-item-link <?= $currentPage === 'index'? "active" : "" ?>" href="<?= "index.php"?>"> <?=$config['menu']['index']?> </a>
 			</li>
-				<?php foreach($genres as $id):?>
+				<?php foreach($genres as $genre):?>
 					<li class="menu-item">
-				<a class="menu-item-link <?= $currentPage === $id['NAME'] ? "active" : "" ?>" href="<?= "index.php?genre=".$id['CODE']?>">  <?= $id['NAME'] ?> </a>
+				<a class="menu-item-link <?= $currentPage === $genre['CODE'] ? "active" : "" ?>" href="<?= "index.php?genre=".$genre['CODE']?>">  <?= $genre['NAME'] ?> </a>
 					</li>
 				<?php endforeach; ?>
 			<li class="menu-item" >

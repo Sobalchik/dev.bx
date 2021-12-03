@@ -5,33 +5,11 @@ function getFileName($path): string
 	return basename($path, ".php");
 }
 
-
-function convertIdToGenres(array $genres, array $movies) : array
+function selectAllFilms():string
 {
-	foreach ($movies as &$movie)
-		{
-			$string = explode(',',$movie['GENRE']);
-			foreach ($string as &$value )
-			{
-				$value = $genres[$value]['NAME'];
-			}
-			unset($value);
-			$movie['GENRE']= implode(', ',$string);
-		}
-	return $movies;
-}
-
-function convertIdToActors(array $actors, array $movies) : array
-{
-	foreach ($movies as &$movie)
-	{
-		$string = explode(',',$movie['CAST']);
-		foreach ($string as &$value )
-		{
-			$value = $actors[$value]['NAME'];
-		}
-		unset($value);
-		$movie['CAST'] = implode(', ',$string);
-	}
-	return $movies;
+	return "SELECT m.ID, m.TITLE, m.ORIGINAL_TITLE, m.DESCRIPTION, m.DURATION, m.AGE_RESTRICTION, m.RELEASE_DATE, m.RATING, d.NAME,
+       (SELECT GROUP_CONCAT(mg.GENRE_ID) FROM movie_genre mg WHERE mg.MOVIE_ID = m.ID) as GENRE,
+       (SELECT GROUP_CONCAT(ma.ACTOR_ID) FROM movie_actor ma WHERE ma.MOVIE_ID = m.ID) as CAST
+FROM movie m
+		INNER JOIN director d on m.DIRECTOR_ID = d.ID ";
 }

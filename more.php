@@ -14,13 +14,13 @@ $db = connection($config);
 $genres = getGenres($db);
 if (isset($_GET['id']))
 {
-	$actors = getActors($db,(int)$_GET['id']);
-	$movies = getMovieById($db,$actors,$_GET['id']);
+	$actors = getActors($db,$_GET['id']);
+	$movie = getMovieById($db,$actors,$_GET['id']);
 }
 
 //render _movie
 $movieListPage = renderTemplate("./resources/blocks/_more.php", [
-	'movies' => $movies,
+	'movie' => $movie,
 ]);
 
 //render layout

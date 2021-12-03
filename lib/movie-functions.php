@@ -24,7 +24,6 @@ function getMovieLengthInHours(int $FilmLengthInMinute): string
 		return "0" . floor($hours) . ":0" . $minutes;
 	}
 	return "0" . floor($hours) . ":" . $minutes;
-
 }
 
 function getGenres($database): array
@@ -47,20 +46,15 @@ function getGenres($database): array
 	return $genres;
 }
 
-
-
 function getMovies($database, array $genres, string $genre = ''): array
 {
 	if ($genre == '')
 	{
-		$query = "SELECT m.ID, m.TITLE, m.ORIGINAL_TITLE, m.DESCRIPTION, m.DURATION, m.AGE_RESTRICTION, m.RELEASE_DATE, m.RATING, d.NAME,
-       (SELECT GROUP_CONCAT(mg.GENRE_ID) FROM movie_genre mg WHERE mg.MOVIE_ID = m.ID) as GENRE,
-       (SELECT GROUP_CONCAT(ma.ACTOR_ID) FROM movie_actor ma WHERE ma.MOVIE_ID = m.ID) as CAST
-FROM movie m
-		INNER JOIN director d on m.DIRECTOR_ID = d.ID ";
+		$query = selectAllFilms();
 	}
 	else
 	{
+		$genre = mysqli_real_escape_string($database, $genre);
 		$query = "SELECT m.ID, m.TITLE, m.ORIGINAL_TITLE, m.DESCRIPTION, m.DURATION, m.AGE_RESTRICTION, m.RELEASE_DATE, m.RATING, d.NAME,
        (SELECT GROUP_CONCAT(mg.GENRE_ID) FROM movie_genre mg WHERE mg.MOVIE_ID = m.ID) as GENRE,
        (SELECT GROUP_CONCAT(ma.ACTOR_ID) FROM movie_actor ma WHERE ma.MOVIE_ID = m.ID) as CAST
@@ -75,25 +69,25 @@ FROM movie m
 	{
 		trigger_error($database->error, E_USER_ERROR);
 	}
-	$movies= [];
-	while ($row = mysqli_fetch_assoc($result))
+
+	$movies = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+	return (convertIdToGenres($genres, $movies));
+}
+
+function convertIdToGenres(array $genres, array $movies) : array
+{
+	foreach ($movies as &$movie)
 	{
-		$movies[$row['ID']] =
-			[
-				'ID' => $row['ID'],
-				'TITLE' => $row['TITLE'],
-				'ORIGINAL_TITLE' => $row['ORIGINAL_TITLE'],
-				'DESCRIPTION' => $row['DESCRIPTION'],
-				'DURATION' => $row['DURATION'],
-				'AGE_RESTRICTION' => $row['AGE_RESTRICTION'],
-				'RELEASE_DATE' => $row['RELEASE_DATE'],
-				'RATING' => $row['RATING'],
-				'NAME' => $row['NAME'],
-				'GENRE' => $row['GENRE'],
-				'CAST' => $row['CAST']
-			];
+		$arrayWithGenres = explode(',',$movie['GENRE']);
+		foreach ($arrayWithGenres as &$genre )
+		{
+			$genre = $genres[$genre]['NAME'];
+		}
+		unset($genre);
+		$movie['GENRE']= implode(', ',$arrayWithGenres);
 	}
-	return (convertIdToGenres($genres,$movies));
+	return $movies;
 }
 
 
