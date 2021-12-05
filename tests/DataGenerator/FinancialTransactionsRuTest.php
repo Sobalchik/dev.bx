@@ -108,7 +108,7 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 	 * @param array $fields
 	 */
 
-	public function testGetDataReturnString(array $fields): void
+	public function testGetDataReturnsString(array $fields): void
 	{
 		$dataGenerator = new \App\DataGenerator\FinancialTransactionsRu();
 
