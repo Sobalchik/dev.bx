@@ -101,4 +101,21 @@ class FinancialTransactionsRuTest extends \PHPUnit\Framework\TestCase
 		static::assertEquals('ST00012|Name=Name|PersonalAcc=PersonalAccount|BankName=BankName|BIC=BIC|CorrespAcc=CorrespAcc',
 			$data);
 	}
+
+	/**
+	 * @dataProvider getCorrectValidateFailSamples
+	 *
+	 * @param array $fields
+	 */
+
+	public function testGetDataReturnString(array $fields): void
+	{
+		$dataGenerator = new \App\DataGenerator\FinancialTransactionsRu();
+
+		$dataGenerator->setFields($fields);
+
+		$data = $dataGenerator->getData();
+
+		static::assertIsString($data);
+	}
 }
