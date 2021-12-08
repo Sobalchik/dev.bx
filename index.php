@@ -4,7 +4,7 @@ use Army\Archer;
 
 spl_autoload_register(function ($class)
 {
-	include __DIR__ . 'index.php/' . str_replace("\\", "/", $class) . '.php';
+	include __DIR__ . '/' . str_replace("\\", "/", $class) . '.php';
 });
 //
 //$armyA = [];
@@ -16,11 +16,11 @@ spl_autoload_register(function ($class)
 //	$armyB[] = rand(0, 1) > 0 ? new \Army\Archer() : new \Army\Horseman();
 //}
 //
-$calculatePower = function ($sum, $warrior)
-{
-	$sum += $warrior->power();
-	return $sum;
-};
+// $calculatePower = function ($sum, $warrior)
+// {
+// 	$sum += $warrior->power();
+// 	return $sum;
+// };
 //
 //$armyPowerA = array_reduce($armyA, $calculatePower);
 //$armyPowerB = array_reduce($armyB, $calculatePower);
@@ -31,10 +31,10 @@ $calculatePower = function ($sum, $warrior)
 //$armyA = [];
 //$armyB = [];
 //
-//$forges = [
-//	'archer',
-//	'horseman',
-//];
+// $forges = [
+// 	'archer',
+// 	'horseman',
+// ];
 //
 //for ($i = 0; $i < 100; $i++)
 //{
@@ -55,8 +55,15 @@ $calculatePower = function ($sum, $warrior)
 //var_dump($barbarianFactory->createArcher());
 //var_dump($barbarianFactory->createHorseman());
 
-$build = new \Army\Builder\ArcherBuilder();
+$sword = \Army\Weapon\Helper::getForge('sword')->createWeapon();
 
-var_dump(\Army\Builder\Director::build($build));
+$archer = new \Army\Builder\ArcherBuilder();
+\Army\Builder\Director::build($archer,$sword);
+$archer->addLeftHandWeapon($sword);
+var_dump($archer);
 
-$build->addLeftHandArmor()->getWarrior();
+$horseman = new \Army\Builder\HorsemanBuilder();
+var_dump(\Army\Builder\Director::build($horseman));
+
+$infantryman = new \Army\Builder\InfantrymanBuilder();
+var_dump(\Army\Builder\Director::build($infantryman));
