@@ -7,20 +7,19 @@ use Army\WarriorTemplate;
 use Army\Weapon\Helper;
 use Army\Weapon\Weapon;
 
-
-class ArcherBuilder implements WarriorBuilder
+class HorsemanBuilder implements WarriorBuilder
 {
 
 	private $warriorTemplate;
 	public function addRightHandWeapon(?Weapon $weapon = null): WarriorBuilder
 	{
-		$this->warriorTemplate->set('rightHandWeapon', $weapon ?: Helper::getForge('bow')->createWeapon());
+		$this->warriorTemplate->set('rightHandWeapon', $weapon ?: Helper::getForge('spear')->createWeapon());
 		return $this;
 	}
 
 	public function addLeftHandWeapon(?Weapon $weapon = null): WarriorBuilder
 	{
-		$this->warriorTemplate->set('leftHandWeapon', $weapon ?: Helper::getForge('knife')->createWeapon());
+		$this->warriorTemplate->set('leftHandWeapon', $weapon ?: Helper::getForge('shield')->createWeapon());
 		return $this;
 	}
 

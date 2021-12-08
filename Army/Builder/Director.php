@@ -3,7 +3,6 @@
 namespace Army\Builder;
 
 use Army\WarriorTemplate;
-use Army\Weapon\Bow;
 
 class Director
 {
@@ -13,7 +12,7 @@ class Director
 			->createWarriorTemplate()
 			->addLeftHandArmor()
 			->addLeftHandWeapon()
-			->addRightHandWeapon(new Bow())
+			->addRightHandWeapon()
 			->getWarrior()
 		;
 	}

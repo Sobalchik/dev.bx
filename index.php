@@ -4,7 +4,7 @@ use Army\Archer;
 
 spl_autoload_register(function ($class)
 {
-	include __DIR__ . 'index.php/' . str_replace("\\", "/", $class) . '.php';
+	include __DIR__ . '/' . str_replace("\\", "/", $class) . '.php';
 });
 //
 //$armyA = [];
@@ -16,11 +16,11 @@ spl_autoload_register(function ($class)
 //	$armyB[] = rand(0, 1) > 0 ? new \Army\Archer() : new \Army\Horseman();
 //}
 //
-$calculatePower = function ($sum, $warrior)
-{
-	$sum += $warrior->power();
-	return $sum;
-};
+// $calculatePower = function ($sum, $warrior)
+// {
+// 	$sum += $warrior->power();
+// 	return $sum;
+// };
 //
 //$armyPowerA = array_reduce($armyA, $calculatePower);
 //$armyPowerB = array_reduce($armyB, $calculatePower);
