@@ -5,11 +5,11 @@ spl_autoload_register(function ($class) {
 });
 
 
-// $advertisement = (new \Entity\Advertisement())
-// 	->setBody("test")
-// 	->setTitle("test")
-// 	->setDuration(10);
-//
+ $advertisement = (new \Entity\Advertisement())
+ 	->setBody("Body")
+ 	->setTitle("Title")
+ 	->setDuration(10);
+
 // $calculator = new \Service\AdvCalculator($advertisement);
 // $calculator->applyCost();
 //
@@ -18,8 +18,9 @@ spl_autoload_register(function ($class) {
 
 $FacebookProvider = new \Service\FacebookProvider(new \Service\Formatting\PlainTextFormatter());
 
-$FacebookProvider->publicate((new \Entity\Advertisement())
-	->setBody('test1')
-	->setTitle('test2')
-	->setDuration(10)
-	);
+$FacebookProvider->publicate($advertisement);
+echo "\n------------\n";
+$decorator = new \Decorator\HeaderAndFooterCreation('Внимание','Ждем вас',$advertisement);;
+$FacebookProvider->publicate($decorator->addHeaderAndFooter());
+
+
