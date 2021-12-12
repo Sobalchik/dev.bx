@@ -21,13 +21,13 @@ class Settings
 
 	public function disableAfterSaveActions(): self
 	{
-		$this->isBeforeActionsEnabled = false;
+		$this->isAfterActionsEnabled = false;
 
 		return $this;
 	}
 
 	public function isAfterActionsEnabled(): bool
 	{
-		return $this->isBeforeActionsEnabled;
+		return $this->isAfterActionsEnabled;
 	}
 }

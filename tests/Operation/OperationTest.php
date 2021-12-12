@@ -184,7 +184,33 @@ class OperationTest extends TestCase
 			App\Operation\Operation::ACTION_AFTER_SAVE,
 			$this->getActionThatNeverInvoked()
 		);
-
 		$operation->launch();
 	}
+
+	public function testThatErrorWillBeReturnedAfterActionsIfTheyEnableInSettings()
+	{
+		$settings = new App\Operation\Settings();
+
+		$order = $this->getOrderThatSavesSuccessfully();
+
+		$operation = new App\Operation\Operation($order, $settings);
+
+		$action = $this->getMockBuilder(\App\Operation\Action::class)
+			->onlyMethods(['process'])
+			->getMockForAbstractClass()
+		;
+		$errorMessage = 'Error during after action in test';
+
+		$action->expects(static::once())
+			->method('process')
+			->with($order)
+			->willReturn((new \App\Result())->addError(new Error($errorMessage)))
+		;
+
+		$operation->addAction(
+			\App\Operation\Operation::ACTION_AFTER_SAVE,
+			$action);
+		$operation->launch();
+	}
+
 }

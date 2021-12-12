@@ -59,6 +59,7 @@ class Operation
 		{
 			return $result->addErrors($saveResult->getErrors());
 		}
+
 		if ($this->settings->isAfterActionsEnabled())
 		{
 			$afterActionsResult = $this->processActions(static::ACTION_AFTER_SAVE);
