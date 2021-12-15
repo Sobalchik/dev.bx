@@ -51,7 +51,8 @@ class EventBus
 	}
 	public function log($time, $typeOfStrategy)
 	{
-		echo $typeOfStrategy . " strategy was bought at ". var_dump($time);
+		$log = $typeOfStrategy . " was bought at " . $time->format('Y-m-d H:i:s') . "\n";
+		file_put_contents('log.txt',$log,FILE_APPEND);
 	}
 
 
