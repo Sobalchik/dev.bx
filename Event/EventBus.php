@@ -49,10 +49,9 @@ class EventBus
 			call_user_func($callback, $data);
 		}
 	}
-	public function log($time)
+	public function log($time, $typeOfStrategy)
 	{
-		echo "I was called " ;
-		var_export($time);
+		echo $typeOfStrategy . " strategy was bought at ". var_dump($time);
 	}
 
 
