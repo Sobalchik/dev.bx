@@ -8,8 +8,10 @@ spl_autoload_register(function ($class)
 	include __DIR__ . '/' . str_replace("\\", "/",  $class) . '.php';
 });
 
-//\Event\EventBus::getInstance()->subscribe("onUserAdd", "\\Helper\\Subscriber::onUserAdd");
-//\Event\EventBus::getInstance()->subscribe("onUserUpdate", "\\Helper\\Subscriber::onUserUpdate");
+\Event\EventBus::getInstance()->subscribe("onUserAdd", "\\Helper\\Subscriber::onUserAdd");
+\Event\EventBus::getInstance()->subscribe("onUserUpdate", "\\Helper\\Subscriber::onUserUpdate");
+\Event\EventBus::getInstance()->subscribe("onServicePurchase", "\\Helper\\Subscriber::onServicePurchase");
+
 //
 //
 //$user = new User();
@@ -29,11 +31,14 @@ spl_autoload_register(function ($class)
 
 //function purchasePremiumLite()
 //{
-	var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumLiteStrategy()));
+// var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumLiteStrategy()));
 //}
 
 //function purchasePremium($type)
 //{
-	var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumStrategy()));
+// var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchasePremiumStrategy()));
 //}
+//function purchaseStandard($type)
+//{
 	var_dump(\Strategy\PurchaseServiceContext::purchase(new \Strategy\PurchaseStandardStrategy()));
+//}

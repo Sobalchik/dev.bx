@@ -3,6 +3,7 @@
 namespace Strategy;
 
 use Entity\Service;
+use Event\EventBus;
 
 class PurchaseStandardStrategy implements PurchaseStrategy
 {
@@ -14,7 +15,6 @@ class PurchaseStandardStrategy implements PurchaseStrategy
 		$service->setIsStandard(true);
 		$service->setActivatedUntil((new \DateTime())->modify("+ 30 days"));
 		$service->setType(Service::TYPES['standard']);
-		\Event\EventBus::getInstance()->log((new \DateTime()),$service->getType());
 		return $service;
 	}
 }

@@ -49,11 +49,5 @@ class EventBus
 			call_user_func($callback, $data);
 		}
 	}
-	public function log($time, $typeOfStrategy)
-	{
-		$log = $typeOfStrategy . " was bought at " . $time->format('Y-m-d H:i:s') . "\n";
-		file_put_contents('log.txt',$log,FILE_APPEND);
-	}
-
 
 }

@@ -114,7 +114,7 @@ class Service
 	 */
 	public function setIsStandard($isStandard)
 	{
-		$this->isLite = $isStandard;
+		$this->isStandard = $isStandard;
 		return $this;
 	}
 
@@ -136,4 +136,5 @@ class Service
 		$this->type = $type;
 		return $this;
 	}
+
 }
