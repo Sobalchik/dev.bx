@@ -14,7 +14,7 @@
 
 Необходимые классы для работы с элементами бизнес-логики:
 - MovieEntity, DirectorEntity, GenreEntity, DirectorEntity (классы, содержащие информацию из бд)
-- UserController (класс, реализущий GET и POST запросы, а так же использует запросы из наших сервисов ( MovieService, DirectorService, GenreService, DirectorService))
+- UserController (класс, обрабатывающий GET и POST запросы, а так же использует запросы из наших сервисов ( MovieService, DirectorService, GenreService, DirectorService))
 - MovieService, DirectorService, GenreService, DirectorService ( классы, являющиеся прослойкой между бд и контроллером, тут пишутся запросы к бд)
 - Желательно: MovieServiceInterface, DirectorServiceInterface, GenreServiceInterface, DirectorServiceInterface (чтобы указать, какие методы  нужно реализовать классам выше, к примеру - getAllFilms )
 
@@ -22,6 +22,5 @@
 
 Краткое текстовое пояснение:
 
-Наш проект организует работу сайта с каталогами фильмов. Клиент заходит на страницу index.php - запускается такой-то процесс,
-подключается класс каталога пиццы. Этот класс обращается к базе данных с помощью класса Х. Список доступных
-пицц выводится на экран с помощью двух классов - Y и Z
+Наш проект организует работу сайта с каталогами фильмов. Клиент заходит на страницу index.php - запускается подключение к бд с помощью DatabaseConnetion. Далее класс UserController обрабатывает пришедший к нему запрос 
+( если запросов нет, просто получаем весь список фильмов с помощью классов MovieEntity и MovieService). Далее передаем классу Render данные ( в зависимости от запроса) и рендерим layout с контентной частью.
