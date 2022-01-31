@@ -4,19 +4,16 @@
 - index.php (главная страница)
 - more.php (страница с дополнительной информацией о фильме)
 - chose.php (страница с избранным)
-
-- Entity (абстрактный)
-- Controller (абстрактный)
-- Render (класс, отвечающий за рендер страниц)
-- DatabaseConnection-singleton (класс, отвечающий за подключение к бд)
+- Render (класс, отвечающий за рендер страниц), при желании можно создать наследников, которые будут рендерить отдельные части
+- MovieEntity, DirectorEntity, GenreEntity, DirectorEntity (классы, содержащие информацию из бд)
+- MovieService, DirectorService, GenreService, DirectorService ( классы, являющиеся прослойкой между бд и контроллером, тут пишутся запросы к бд)
+- Желательно: MovieServiceInterface, DirectorServiceInterface, GenreServiceInterface, DirectorServiceInterface (чтобы указать, какие методы  нужно реализовать классам выше, к примеру - getAllFilms )
+- UserController (класс, реализущий GET и POST запросы, а так же использует запросы из наших сервисов ( MovieService, DirectorService, GenreService, DirectorService))
+- DatabaseConnection (класс, отвечающий за подключение к бд)
 - Config (класс отвечающий за настройки проекта)
 
 
 Необходимые классы для работы с элементами бизнес-логики:
-- MovieEntity, DirectorEntity, GenreEntity, DirectorEntity (классы, содержащие информацию из бд)
-- UserController (класс, реализущий GET и POST запросы, а так же использует запросы из наших сервисов ( MovieService, DirectorService, GenreService, DirectorService))
-- MovieService, DirectorService, GenreService, DirectorService ( классы, являющиеся прослойкой между бд и контроллером, тут пишутся запросы к бд)
-- Желательно: MovieServiceInterface, DirectorServiceInterface, GenreServiceInterface, DirectorServiceInterface (чтобы указать, какие методы  нужно реализовать классам выше, к примеру - getAllFilms )
 
 
 
