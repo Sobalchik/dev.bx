@@ -1,5 +1,6 @@
 @import "movie-list.css";
 @import "more.css";
+@import "creation.css";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
 
@@ -30,7 +31,7 @@
 
 .menu {
 	display: block;
-	margin: 0 30px;
+	margin: 30px;
 	width: 341px;
 	height: 706px;
 	overflow-y: scroll;
@@ -87,7 +88,7 @@
 }
 .header-menu-request {
 	height: 40px;
-	width: 836px;
+	width: 42px;
 	display: flex;
 	border-bottom: 1px solid rgba(196, 196, 196, 1);
 }
@@ -99,7 +100,7 @@
 .header-menu-request-words{
 
 	width: 492px;
-	height: 40px;
+	height: 35px;
 
 	position: relative;
 	font-family: 'Open Sans', sans-serif;
@@ -128,6 +129,7 @@
 
 	margin-left: 15px;
 	color: #FFFFFF;
+	cursor: pointer;
 }
 
 .header-request-add{
@@ -144,7 +146,7 @@
 	text-decoration: none;
 	text-align: center;
 	text-transform: uppercase;
-	margin-left: 115px;
+	margin-left: 350px;
 
 }
 .header-request-add-link{

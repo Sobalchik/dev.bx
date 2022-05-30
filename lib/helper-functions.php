@@ -13,3 +13,8 @@ function selectAllFilms():string
 FROM movie m
 		INNER JOIN director d on m.DIRECTOR_ID = d.ID ";
 }
+
+function selectAllDirectorsName():string
+{
+	return "SELECT NAME from director";
+}

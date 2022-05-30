@@ -39,4 +39,21 @@
 			<div class="more-content-information-description"><?=htmlspecialchars($movie['DESCRIPTION'])?></div>
 		</div>
 	</div>
+	<form action="delete-movie-service.php" method="POST">
+		<input type="hidden" name="id" value="<?= $_GET['id']?>">
+		<button id="delete-button" class="more-content-delete-button" type="submit">Удалить фильм</button>
+	</form>
 </div>
+
+<script>
+	document.getElementById("delete-button").addEventListener("click",function(){
+		if (confirm("Вы уверены, что хотите удалить фильм?"))
+		{
+
+		} else
+		{
+			close();
+		}
+	})
+</script>
+

@@ -77,7 +77,7 @@
 }
 
 .more-content{
-	margin: 21px 41px 43px 27px;
+	margin: 21px 41px -15px 27px;
 	display: flex;
 	width: 1102px;
 	height: 754px;
@@ -292,6 +292,26 @@
 
 	color: #000000;
 }
+
+.more-content-delete-button{
+	width: 158px;
+	height: 40px;
+	background: #f00;
+	border-radius: 7px;
+	font-family: 'Open Sans', sans-serif;
+
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 40px;
+
+	text-decoration: none;
+	text-align: center;
+	text-transform: uppercase;
+	margin-left: 500px;
+
+	cursor: pointer;
+}
+
 
 
 

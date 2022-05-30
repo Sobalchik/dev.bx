@@ -67,3 +67,52 @@ function getColorByRating($rating): string
 	}
 	return "-red";
 }
+
+function getDirectorId($database, string $director): int
+{
+	$query ="SELECT ID from director WHERE NAME = '{$director}'";
+
+	$result = mysqli_query($database, $query);
+
+	if (!$result)
+	{
+		trigger_error($database->error, E_USER_ERROR);
+	}
+
+	$id = mysqli_fetch_row($result);
+
+	return $id[0];
+}
+
+function addDirector($database, string $director): int
+{
+	$query = "INSERT into director(NAME) value ('{$director}')";
+
+	$result = mysqli_query($database, $query);
+
+	if (!$result)
+	{
+		trigger_error($database->error, E_USER_ERROR);
+	}
+
+	return mysqli_insert_id($database);
+}
+
+function checkDirectorExist($database, $director): bool
+{
+	$query = selectAllDirectorsName() . " WHERE NAME = '{$director}'";
+
+	$result = mysqli_query($database, $query);
+
+	if (!$result)
+	{
+		trigger_error($database->error, E_USER_ERROR);
+	}
+
+	$res = mysqli_fetch_assoc($result);
+
+	if(count($res)>0)
+	return true;
+
+	return false;
+}

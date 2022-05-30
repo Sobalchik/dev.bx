@@ -46,16 +46,20 @@ function getGenres($database): array
 	return $genres;
 }
 
-function getMovies($database, array $genres, string $genre = ''): array
+function getMovies($database, array $genres, string $genre = '', string $request = ''): array
 {
 	if ($genre == '')
 	{
+		if($request == '')
 		$query = selectAllFilms();
+		else
+		$query = selectAllFilms() . "WHERE TITLE LIKE '%{$request}%'";
+
 	}
 	else
 	{
-		$genre = mysqli_real_escape_string($database, $genre);
-		$query = "SELECT m.ID, m.TITLE, m.ORIGINAL_TITLE, m.DESCRIPTION, m.DURATION, m.AGE_RESTRICTION, m.RELEASE_DATE, m.RATING, d.NAME,
+			$genre = mysqli_real_escape_string($database, $genre);
+			$query = "SELECT m.ID, m.TITLE, m.ORIGINAL_TITLE, m.DESCRIPTION, m.DURATION, m.AGE_RESTRICTION, m.RELEASE_DATE, m.RATING, d.NAME,
        (SELECT GROUP_CONCAT(mg.GENRE_ID) FROM movie_genre mg WHERE mg.MOVIE_ID = m.ID) as GENRE,
        (SELECT GROUP_CONCAT(ma.ACTOR_ID) FROM movie_actor ma WHERE ma.MOVIE_ID = m.ID) as CAST
 FROM movie m
@@ -64,6 +68,8 @@ FROM movie m
 		INNER JOIN genre g on mg.GENRE_ID = g.ID
 		WHERE CODE = '{$genre}'";
 	}
+
+
 	$result = mysqli_query($database, $query);
 	if (!$result)
 	{
@@ -88,6 +94,29 @@ function convertIdToGenres(array $genres, array $movies) : array
 		$movie['GENRE']= implode(', ',$arrayWithGenres);
 	}
 	return $movies;
+}
+
+function addMovie($database, string $title, string $originalTitle, string $description, string $duration,
+	string $ageRestriction, string $releaseDate, string $rating, int $director)
+{
+	$query = "INSERT into movie (TITLE, ORIGINAL_TITLE, DESCRIPTION, DURATION, AGE_RESTRICTION, RELEASE_DATE, RATING, DIRECTOR_ID) 
+	value ('{$title}','{$originalTitle}','{$description}',{$duration},{$ageRestriction},{$releaseDate},{$rating},{$director})";
+
+	$result = mysqli_query($database, $query);
+	if (!$result)
+	{
+		trigger_error($database->error, E_USER_ERROR);
+	}
+}
+
+function deleteMovie($database, string $id)
+{
+	$query = "DELETE from movie WHERE ID='{$id}'";
+	$result = mysqli_query($database, $query);
+	if (!$result)
+	{
+		trigger_error($database->error, E_USER_ERROR);
+	}
 }
 
 

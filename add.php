@@ -14,9 +14,9 @@ $genres = getGenres($db);
 $movies = getMovies($db, $genres, (string)$_GET['genre'], (string)$_GET['request']);
 $currentPage = $_GET['genre'] ?? getFileName(__FILE__);
 
-//render movie-list
-$movieListPage = renderTemplate("./resources/pages/movie-list.php", [
-	'movies' => $movies,
+//render movie creation
+$movieListPage = renderTemplate("./resources/pages/movie-creation.php", [
+
 ]);
 
 //render layout
