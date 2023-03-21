@@ -3,6 +3,8 @@
 require "./movies/movies-functions.php";
 require "./movies/movies.php";
 
+// hi
+
 /** @var array $movies */
 
 $age = setUserAge();
